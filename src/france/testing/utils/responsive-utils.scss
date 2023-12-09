@@ -1,0 +1,101 @@
+$breakpoint-xs: 0px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1440px;
+$breakpoint-xl: 1920px;
+
+@mixin media-xs-up($max-width: null) {
+  @if $max-width {
+    @media print,
+      screen and (min-width: $breakpoint-xs) and (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @media print, screen and (min-width: $breakpoint-xs) {
+      @content;
+    }
+  }
+}
+
+@mixin media-sm-up($max-width: null) {
+  @if $max-width {
+    @media print,
+      screen and (min-width: $breakpoint-sm) and (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @media print, screen and (min-width: $breakpoint-sm) {
+      @content;
+    }
+  }
+}
+
+@mixin media-md-up($max-width: null) {
+  @if $max-width {
+    @media print,
+      screen and (min-width: $breakpoint-md) and (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @media print, screen and (min-width: $breakpoint-md) {
+      @content;
+    }
+  }
+}
+
+@mixin media-lg-up($max-width: null) {
+  @if $max-width {
+    @media print,
+      screen and (min-width: $breakpoint-lg) and (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @media print, screen and (min-width: $breakpoint-lg) {
+      @content;
+    }
+  }
+}
+
+@mixin media-xl-up($max-width: null) {
+  @if $max-width {
+    @media print,
+      screen and (min-width: $breakpoint-xl) and (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @media print, screen and (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpoints {
+  &:before {
+    display: none;
+    visibility: hidden;
+
+    @include media-xs-up($breakpoint-sm - 1) {
+      content: 'xs';
+    }
+
+    @include media-sm-up($breakpoint-md - 1) {
+      content: 'sm';
+    }
+
+    @include media-md-up($breakpoint-lg - 1) {
+      content: 'md';
+    }
+
+    @include media-lg-up($breakpoint-xl - 1) {
+      content: 'lg';
+    }
+
+    @include media-xl-up {
+      content: 'xl';
+    }
+  }
+}
+
+body {
+  @include breakpoints;
+}

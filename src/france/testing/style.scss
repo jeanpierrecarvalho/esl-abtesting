@@ -1,0 +1,18 @@
+@import './utils/responsive-utils';
+
+$body-color: green;
+
+.catalog-section {
+  &__container {
+    .product-card {
+      &__title {
+        @include media-xs-up() {
+          background-color: blue;
+        }
+        @include media-md-up() {
+          background-color: green;
+        }
+      }
+    }
+  }
+}
